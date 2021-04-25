@@ -1,0 +1,63 @@
+﻿<Window x:Class="Drink_Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drink_Client"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="LightBlue"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel >
+            <Menu DockPanel.Dock="Top" >
+                <MenuItem Header="Действия">
+                    <MenuItem  Header="Добавить" Command="{Binding New_category}"   />
+
+                </MenuItem>
+            </Menu>
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding Go_to_Main}"
+                    CommandParameter="{Binding ElementName=Categories_Main}"
+                    Content="Назад" HorizontalAlignment="Left" Margin="0 0 20 0" />
+                <TextBlock Margin="0 0 5 0"> по  названию :</TextBlock>
+                <TextBox x:Name="serch_box"
+                         Text="{Binding Serch_str, UpdateSourceTrigger=PropertyChanged}" 
+                         Width="350" HorizontalAlignment="Right" Margin="20 0 0 0"
+                         FontSize="15" />
+            </StackPanel>
+            <ListBox Grid.Column="0" HorizontalAlignment="Stretch" ItemsSource="{Binding Drinks}"  Background="LightBlue"
+                     SelectedItem="{Binding Selected_Item}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock  Text="{Binding Path=Name}" FontSize="15"></TextBlock>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel x:Name="stack" HorizontalAlignment="Stretch" Grid.Column="1" >
+            <TextBlock  FontWeight="Bold"  Background="Blue"  Text="Выбраная Напиток" FontSize="20"></TextBlock>
+            <TextBlock  FontWeight="Bold" Background="LightBlue"  Text="Название" FontSize="15"></TextBlock>
+            <TextBox  IsEnabled="False"  Text="{Binding Selected_Item.Name, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+
+            <TextBlock  FontWeight="Bold" Background="LightBlue"  Text="Цена" FontSize="15"></TextBlock>
+            <TextBox  IsEnabled="False"  Text="{Binding Selected_Item.Price, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+
+            <TextBlock  FontWeight="Bold" Background="LightBlue"  Text="Милилитры" FontSize="15"></TextBlock>
+            <TextBox  IsEnabled="False"  Text="{Binding Selected_Item.Amount, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+
+            <TextBlock  FontWeight="Bold" Background="LightBlue"  Text="Всего продано" FontSize="15"></TextBlock>
+            <TextBox  IsEnabled="False"  Text="{Binding Selected_Item.Count_Sell, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+
+
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding Sell}" Margin="30 0 0 0" Content="Продать" FontWeight="Bold" FontSize="15"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
