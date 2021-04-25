@@ -1,0 +1,54 @@
+﻿<Window x:Class="Drink_Admin.View.New_Drink"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drink_Admin.View"
+        mc:Ignorable="d"
+        Title="New_Drink" Height="450" Width="800">
+    <Grid Margin="0 10 0 0" Background="LightBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <TextBlock Text="Название" FontSize="20"  Grid.Row="0" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBlock Text="Цена" FontSize="20"  Grid.Row="1" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBlock Text="Количество" FontSize="20"  Grid.Row="2" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+
+
+
+
+        <TextBox  x:Name="Name" 
+                  FontSize="20" Grid.Column="1"                    
+                       Grid.Row="0"  Margin="30 30 20 20" />
+
+        <TextBox  x:Name="prise" 
+                  FontSize="20" Grid.Column="1"                    
+                       Grid.Row="1"  Margin="30 30 20 20" />
+
+        <TextBox  x:Name="amout" 
+                  FontSize="20" Grid.Column="1"                    
+                       Grid.Row="2"  Margin="30 30 20 20" />
+
+        <Button x:Name="Add" Grid.Column="1"                   
+                    Margin="20 20 20 20"              
+                    Grid.Row="5">
+            <TextBlock FontSize="20" Height="26">Добавить</TextBlock>
+        </Button>
+
+        <Button Grid.Column="0"  Command="{Binding Cansel_new}"   CommandParameter="{Binding ElementName=new_categories}"              
+                    Margin="20 20 20 20"            
+                    Grid.Row="5">
+            <TextBlock FontSize="20" Height="26">Отмена</TextBlock>
+        </Button>
+
+    </Grid>
+</Window>
